@@ -49,7 +49,9 @@ function Navbar() {
     { label: 'Cardápio', href: '#cardapio' },
     { label: 'Experiência', href: '#experiencia' },
     { label: 'Galeria', href: '#galeria' },
+    { label: 'Vinhos', href: '#vinhos' },
     { label: 'Avaliações', href: '#avaliacoes' },
+    { label: 'Horários', href: '#horarios' },
     { label: 'Contato', href: '#contato' },
   ]
 
@@ -57,8 +59,7 @@ function Navbar() {
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <a href="#" className="navbar-brand">
-          <img src="./images/logo.png" alt="Caprese Floripa" />
-          <span className="navbar-brand-text">Caprese</span>
+          <img src="./images/logo-oficial.png" alt="Caprese Floripa" />
         </a>
 
         <div className="navbar-links">
@@ -243,7 +244,7 @@ function Cardapio() {
       category: 'Aperitivos',
       title: 'Schiaccina & Antipasti',
       desc: 'Entradas que abrem o apetite com sabores mediterrâneos. Focaccia artesanal, bruschetta e tábua de frios selecionados.',
-      image: './images/ambiente.jpg',
+      image: './images/real-instagram-1.jpg',
     },
   ]
 
@@ -317,7 +318,7 @@ function Experience() {
 
           <Reveal delay={0.2}>
             <div className="experience-image">
-              <img src="./images/ambiente.jpg" alt="Ambiente Caprese Floripa" />
+              <img src="./images/real-instagram-1.jpg" alt="Ambiente Caprese Floripa" />
               <div className="experience-image-badge">
                 <span className="number">35+</span>
                 <span className="label">Anos de tradição</span>
@@ -332,7 +333,7 @@ function Experience() {
 
 function Gallery() {
   const images = [
-    { src: './images/ambiente.jpg', alt: 'Ambiente do restaurante' },
+    { src: './images/real-instagram-1.jpg', alt: 'Ambiente do restaurante' },
     { src: './images/hero-pizza.jpg', alt: 'Pizza artesanal' },
     { src: './images/cordeiro.jpg', alt: 'Cordeiro inesquecível' },
     { src: './images/massa-artesanal.jpg', alt: 'Massa artesanal' },
@@ -357,6 +358,149 @@ function Gallery() {
               </div>
             </Reveal>
           ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function WineSection() {
+  return (
+    <section className="experience" id="vinhos" style={{ background: 'var(--espresso)' }}>
+      <div className="container">
+        <div className="experience-grid">
+          <Reveal delay={0.1}>
+            <div className="experience-image">
+              <img src="./images/vinho.jpg" alt="Carta de vinhos Caprese" />
+              <div className="experience-image-badge" style={{ background: 'var(--wine)' }}>
+                <span className="number">50+</span>
+                <span className="label">Rótulos selecionados</span>
+              </div>
+            </div>
+          </Reveal>
+
+          <div>
+            <Reveal>
+              <div className="section-label">Carta de Vinhos</div>
+              <h2 className="section-title">
+                Harmonizações que<br />elevam cada <em>sabor</em>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <p className="history-text">
+                Nossa carta reúne rótulos cuidadosamente selecionados de vinícolas
+                italianas consagradas e produtores catarinenses em ascensão. Cada vinho
+                é escolhido para harmonizar perfeitamente com nossas pizzas e massas.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <p className="history-text" style={{ marginTop: 16 }}>
+                Oferecemos vinhos em taça para que você possa explorar diferentes
+                harmonizações durante sua experiência. Nossa equipe terá prazer
+                em recomendar o rótulo ideal para o seu prato.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <div style={{ display: 'flex', gap: 12, marginTop: 32, flexWrap: 'wrap' }}>
+                {['Chianti Classico', 'Brunello', 'Barolo', 'Prosecco', 'Catarinenses'].map(v => (
+                  <span key={v} style={{
+                    padding: '8px 16px',
+                    border: '1px solid rgba(201, 169, 110, 0.2)',
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: 'var(--gold)',
+                    fontWeight: 500,
+                  }}>{v}</span>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Schedule() {
+  const days = [
+    { day: 'Segunda a Quinta', hours: '18h às 23h', note: '' },
+    { day: 'Sexta e Sábado', hours: '18h às 23h30', note: 'Reservas recomendadas' },
+    { day: 'Domingo', hours: '18h às 23h', note: '' },
+    { day: 'Feriados', hours: '18h às 23h', note: 'Consultar disponibilidade' },
+  ]
+
+  return (
+    <section className="experience" id="horarios" style={{ background: 'var(--espresso-light)' }}>
+      <div className="container">
+        <div className="experience-grid">
+          <div>
+            <Reveal>
+              <div className="section-label">Reservas</div>
+              <h2 className="section-title">
+                Sua mesa está<br /><em>esperando</em>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <p className="history-text">
+                Para garantir a melhor experiência, recomendamos reservas antecipadas,
+                especialmente às sextas e sábados. Nossa equipe está pronta para
+                tornar sua noite especial.
+              </p>
+            </Reveal>
+
+            <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {days.map((d, i) => (
+                <Reveal key={d.day} delay={0.1 + i * 0.08}>
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '16px 20px',
+                    background: 'var(--espresso)',
+                    border: '1px solid rgba(201, 169, 110, 0.08)',
+                  }}>
+                    <div>
+                      <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--cream)' }}>{d.day}</div>
+                      {d.note && <div style={{ fontSize: '0.7rem', color: 'var(--terracotta)', marginTop: 2 }}>{d.note}</div>}
+                    </div>
+                    <div style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.1rem',
+                      color: 'var(--gold)',
+                    }}>{d.hours}</div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={0.5}>
+              <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap' }}>
+                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                  <WhatsappLogo size={18} weight="fill" />
+                  Reservar Agora
+                </a>
+                <a href={`tel:${PHONE.replace(/\D/g, '')}`} className="btn-outline">
+                  <Phone size={18} weight="duotone" />
+                  {PHONE}
+                </a>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.2}>
+            <div className="experience-image">
+              <img src="./images/real-instagram-2.jpg" alt="Promoções Caprese" />
+              <div className="experience-image-badge">
+                <span className="number">14K</span>
+                <span className="label">Seguidores no IG</span>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -581,7 +725,9 @@ export default function App() {
         <Cardapio />
         <Experience />
         <Gallery />
+        <WineSection />
         <Reviews />
+        <Schedule />
         <CtaSection />
         <Contact />
       </main>
